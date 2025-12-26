@@ -31,6 +31,8 @@ async def main():
 
     # Start Scheduler inside async loop
     scheduler = AsyncIOScheduler()
+    scheduler.start()
+    
     scheduler.add_job(lambda: asyncio.create_task(daily_update(app)), "cron", hour=0)
     scheduler.add_job(lambda: asyncio.create_task(daily_calendar_update(app)), "cron", hour=0, minute=15)
     scheduler.start()
