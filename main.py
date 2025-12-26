@@ -18,6 +18,26 @@ PAIRS = {
 init_db()
 
 # ----- Commands -----
+async def main():
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
+
+    # Handlers
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("market", market))
+    app.add_handler(CommandHandler("news", news))
+    app.add_handler(CommandHandler("calendar", calendar))
+    app.add_handler(CommandHandler("broadcast", broadcast))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+
+    # Start Scheduler inside async loop
+    scheduler = AsyncIOScheduler()
+    scheduler.add_job(lambda: asyncio.create_task(daily_update(app)), "cron", hour=0)
+    scheduler.add_job(lambda: asyncio.create_task(daily_calendar_update(app)), "cron", hour=0, minute=15)
+    scheduler.start()
+
+    print("🚀 Bot Started — Polling...")
+    await app.run_polling()
+
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     add_or_update_user(user.id, user.username, user.first_name, user.last_name, "/start")
