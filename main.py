@@ -7,6 +7,14 @@ from db import init_db, add_or_update_user
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import asyncio
 
+BOT_TOKEN = "<BOT_TOKEN>"
+
+async def start(update, context):
+    user = update.effective_user
+    add_or_update_user(user.id, user.username, user.first_name, user.last_name, "/start")
+    await update.message.reply_text("🤖 Bot Active! Use /market, /news, /calendar")
+
+
 PAIRS = {
     "EUR/USD": "EUR/USD",
     "GBP/USD": "GBP/USD",
