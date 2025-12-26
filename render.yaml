@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ForexTrading24x7_bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TWELVEDATA_API_KEY
+        sync: false
