@@ -11,7 +11,6 @@ import requests
 import threading
 import time
 
-
 )
 
 # --------- Logging ----------
@@ -19,6 +18,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s — %(levelname)s — %(message)s"
 )
+
 # --------- ENV VARIABLES ----------
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TD_API_KEY = os.getenv("TWELVEDATA_API_KEY")
@@ -28,6 +28,7 @@ if not BOT_TOKEN:
 
 if not TD_API_KEY:
     logging.warning("⚠ TWELVEDATA_API_KEY missing — prices may fail")
+
 
 # ----- Scheduler -----
 def start_scheduler(app):
