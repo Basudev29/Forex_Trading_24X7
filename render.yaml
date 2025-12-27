@@ -1,15 +1,16 @@
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-TD_API_KEY = os.getenv("TD_API_KEY")
-ADMIN_IDS = [+966554382945]  # Replace with actual admin Telegram user IDs
-
+version: "1"
 services:
-  - type: web
-    name: ForexTrading24x7_bot
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python main.py
-    envVars:
-      - key: TELEGRAM_BOT_TOKEN
-        sync: false
-      - key: TWELVEDATA_API_KEY
-        sync: false
+- type: web
+  name: Forex_Trading_24X7-1
+  runtime: python
+  repo: https://github.com/Basudev29/Forex_Trading_24X7
+  plan: free
+  envVars:
+  - key: TWELVEDATA_API_KEY
+    sync: false
+  - key: BOT_TOKEN
+    sync: false
+  region: oregon
+  buildCommand: pip install -r requirements.txt
+  startCommand: python main.py
+  autoDeployTrigger: commit
