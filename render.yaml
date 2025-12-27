@@ -1,3 +1,7 @@
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+TD_API_KEY = os.getenv("TD_API_KEY")
+ADMIN_IDS = [+966554382945]  # Replace with actual admin Telegram user IDs
+
 services:
   - type: web
     name: ForexTrading24x7_bot
