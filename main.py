@@ -11,6 +11,11 @@ import requests
 import threading
 import time
 
+# --------- Logging ----------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s — %(levelname)s — %(message)s"
+
 # ----------------- CONFIG -----------------
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 TD_API_KEY = os.getenv("TWELVEDATA_API_KEY")
