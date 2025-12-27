@@ -11,13 +11,10 @@ import requests
 import threading
 import time
 
-)
-
 # --------- Logging ----------
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s — %(levelname)s — %(message)s"
-)
 
 # --------- ENV VARIABLES ----------
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
