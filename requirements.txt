@@ -4,7 +4,6 @@ feedparser
 requests
 python-dotenv
 aiogram
-twelve-data
 sqlalchemy
 openai
 python-dateutil
