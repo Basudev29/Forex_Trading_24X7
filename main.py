@@ -16,16 +16,15 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s — %(levelname)s — %(message)s"
 
-# ----------------- CONFIG -----------------
-BOT_TOKEN = os.getenv("BOT_TOKEN")
+# --------- ENV VARIABLES ----------
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TD_API_KEY = os.getenv("TWELVEDATA_API_KEY")
-ADMIN_IDS = [+966554382945]  # Telegram ID of admin
 
-bot = telebot.TeleBot(BOT_TOKEN)
-CHAT_ID = None
+if not BOT_TOKEN:
+    raise ValueError("❌ TELEGRAM_BOT_TOKEN not found in environment")
 
-PAIRS = ["EUR/USD", "GBP/USD", "USD/JPY", "XAU/USD"]
-
+if not TD_API_KEY:
+    logging.warning("⚠ TWELVEDATA_API_KEY missing — prices may fail")
 
 # ----- Scheduler -----
 def start_scheduler(app):
