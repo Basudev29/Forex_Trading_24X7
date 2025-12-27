@@ -1,9 +1,11 @@
+pyTelegramBotAPI
+requests
+python-dotenv
 python-telegram-bot==21.6
 apscheduler
 feedparser
 requests
 python-dotenv
-aiogram
 sqlalchemy
 openai
 python-dateutil
