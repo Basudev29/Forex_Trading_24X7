@@ -9,19 +9,6 @@ def fetch_price(symbol, api_key):
         return float(res.get("price", 0))
     except:
         return None
-def get_economic_calendar():
-    # Hardcoded example, replace with API if available
-    calendar = [
-        {"currency": "USD", "event": "Core PCE Data", "impact": "High"},
-        {"currency": "EUR", "event": "Consumer Confidence", "impact": "Medium"},
-        {"currency": "GBP", "event": "GDP Flash Estimate", "impact": "High"},
-        {"currency": "JPY", "event": "BOJ Outlook Report", "impact": "High"},
-    ]
-    message = "📆 Economic Calendar (Today)\n\n"
-    for item in calendar:
-        message += f"• {item['currency']} — {item['event']} ({item['impact']})\n"
-    message += "\n⚠ High impact events → Expect volatility"
-    return message
 
 def generate_signal(price):
     if not price:
